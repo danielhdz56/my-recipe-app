@@ -15,6 +15,4 @@ export class RecipeService {
         // if we omit slice() we would end up, possibly, changing the original array.
         return this.recipes.slice(); 
     }
-
-
 }
