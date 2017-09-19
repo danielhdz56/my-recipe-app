@@ -9,7 +9,7 @@
             [disabled]="!recipeForm.valid">
             Save
           </button>
-          <button type="button" class="btn btn-danger">Cancel</button>
+          <button (click)="onCancel()" type="button" class="btn btn-danger">Cancel</button>
         </div>
       </div>
       <div class="row">
@@ -22,24 +22,38 @@
               id="name"
               formControlName="name">
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
           <div class="form-group">
             <label for="imagePath">Image URL</label>
             <input 
               type="text" 
               class="form-control" 
               id="imagePath"
-              formControlName="imagePath">
+              formControlName="imagePath"
+              #imagePath>
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <img [src]="imagePath.value" class="img-responsive">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
           <div class="form-group">
-            <label for="description">Description</label>
-            <textarea 
-              type="text" 
-              class="form-control" 
-              id="description"
-              rows="6"
-              formControlName="description">
-            </textarea>
-          </div>
+              <label for="description">Description</label>
+              <textarea 
+                type="text" 
+                class="form-control" 
+                id="description"
+                rows="6"
+                formControlName="description">
+              </textarea>
+            </div>
         </div>
       </div>
       <div class="row">
