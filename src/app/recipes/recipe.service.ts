@@ -32,6 +32,11 @@ export class RecipeService {
 
     }
 
+    setRecipes(recipes: Recipe[]) {
+        this.recipes = recipes;
+        this.recipesChanged.next(this.recipes.slice());
+    }
+
     getRecipes(){
         // slice returns a new array which is an exact copy from the one in this file.
         // if we omit slice() we would end up, possibly, changing the original array.
