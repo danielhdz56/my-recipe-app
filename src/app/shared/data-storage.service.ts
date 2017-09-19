@@ -13,11 +13,11 @@ export class DataStorageService {
     private recipeService: RecipeService) { }
 
   storeRecipes() {
-    return this.http.put('https://ng-recipe-book11.firebaseio.com/recipes.json', this.recipeService.getRecipes());
+    return this.http.put('https://udemy-ng-http-85067.firebaseio.com/recipes.json', this.recipeService.getRecipes());
   }
 
   getRecipes() {
-    return this.http.get('https://ng-recipe-book11.firebaseio.com/recipes.json')
+    return this.http.get('https://udemy-ng-http-85067.firebaseio.com/recipes.json')
       .map(
         (response: Response) => {
           const recipes: Recipe[] = response.json();
