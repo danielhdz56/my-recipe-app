@@ -21,7 +21,7 @@ import { SharedModule } from '../shared/shared.module';
         RecipeItemComponent
     ],
     imports: [
-        CommonModule, // gives you access to commong 
+        CommonModule, // gives you access to common angular features
         ReactiveFormsModule,
         RecipesRoutingModule,
         SharedModule
