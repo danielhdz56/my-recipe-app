@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { HomeComponent } from './core/home/home.component';
@@ -12,8 +12,8 @@ const appRoutes: Routes = [
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(appRoutes) // forRoot should only be used in the root routing module
-    ],
+        RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules}) // forRoot should only be used in the root routing module
+    ], // preloadingStrategy allows us to preload modules that are lazy loading
     exports: [RouterModule] // what we import in app.module
 })
 
