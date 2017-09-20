@@ -30,7 +30,7 @@ const appRoutes: Routes = [
     imports: [
         RouterModule.forRoot(appRoutes)
     ],
-    exports: [RouterModule]
+    exports: [RouterModule] // what we import in app.module
 })
 
 export class AppRoutingModule {

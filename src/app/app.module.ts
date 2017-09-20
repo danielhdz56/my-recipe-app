@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { RecipesComponent } from './recipes/recipes.component';
@@ -25,8 +23,8 @@ import { SigninComponent } from './auth/signin/signin.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuardService } from './auth/auth-guard.service';
 
-@NgModule({
-  declarations: [
+@NgModule({ // defines our application
+  declarations: [ // define which components, directives, pipes this module uses
     AppComponent,
     HeaderComponent,
     RecipesComponent,
@@ -41,14 +39,20 @@ import { AuthGuardService } from './auth/auth-guard.service';
     SignupComponent,
     SigninComponent
   ],
-  imports: [
+  imports: [ // defines which other modules does this module use
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule, // when we import modules here we retrieve all of the exports this module provides
     HttpModule,
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [ShoppingListService, RecipeService, DataStorageService, AuthService, AuthGuardService],
-  bootstrap: [AppComponent]
+  providers: [ // defines which services this module uses through the whole application
+    ShoppingListService, 
+    RecipeService, 
+    DataStorageService, 
+    AuthService, 
+    AuthGuardService
+  ],
+  bootstrap: [AppComponent] // defines the root component (where we define starting point of what we see)
 })
-export class AppModule { }
+export class AppModule { } 
