@@ -4,7 +4,6 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipeService } from './recipes/recipe.service';
@@ -14,13 +13,11 @@ import { AuthGuardService } from './auth/auth-guard.service';
 import { SharedModule } from './shared/shared.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { AuthModule } from './auth/auth.module';
-import { HomeComponent } from './home/home.component';
+import { CoreModule } from './core/core.module';
 
 @NgModule({ // defines our application
   declarations: [ // define which components, directives, pipes this module uses
-    AppComponent,
-    HeaderComponent,
-    HomeComponent
+    AppComponent
   ],
   imports: [ // defines which other modules does this module use
     BrowserModule, // contains all features in the common module and some features that are required when the app starts
@@ -28,7 +25,8 @@ import { HomeComponent } from './home/home.component';
     HttpModule,
     SharedModule,
     ShoppingListModule,
-    AuthModule // all of these imports are added eagerly, ie no lazy loading
+    AuthModule, // all of these imports are added eagerly, ie no lazy loading
+    CoreModule // allows us to use the selector for the HeadeComponent in the AppComponent
   ],
   providers: [ // defines which services this module uses through the whole application
     ShoppingListService, 
