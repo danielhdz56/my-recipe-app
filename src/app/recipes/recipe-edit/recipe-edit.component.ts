@@ -100,4 +100,8 @@ export class RecipeEditComponent implements OnInit {
       'ingredients': recipeIngredients // connects the forms array to our html via formArrayName="ingredients"
     });
   }
+
+  getIngredients(recipeForm){
+    recipeForm.get('ingredients').controls;
+  }
 }
