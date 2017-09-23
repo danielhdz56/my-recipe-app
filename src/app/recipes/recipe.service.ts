@@ -1,26 +1,23 @@
-import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
-import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
-@Injectable()
 export class RecipeService {
     recipesChanged = new Subject<Recipe[]>();
-   
+
     private recipes: Recipe[] = [
         new Recipe(
-            'Tasty Schnitzel', 
-            'A super-tasty Schnitzel - just awesome!', 
+            'Tasty Schnitzel',
+            'A super-tasty Schnitzel - just awesome!',
             'https://upload.wikimedia.org/wikipedia/commons/a/ae/Wiener-Schnitzel02.jpg',
             [
                 new Ingredient('Meat', 1),
                 new Ingredient('French Fries', 20)
             ]),
         new Recipe(
-            'Big Fat Burger', 
-            'What else you need to say?', 
+            'Big Fat Burger',
+            'What else you need to say?',
             'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Cheeseburger.jpg/2560px-Cheeseburger.jpg',
             [
                 new Ingredient('Buns', 2),
@@ -28,7 +25,7 @@ export class RecipeService {
             ])
     ];
 
-    constructor(private shoppingListService: ShoppingListService){
+    constructor() {
 
     }
 
@@ -37,19 +34,19 @@ export class RecipeService {
         this.recipesChanged.next(this.recipes.slice());
     }
 
-    getRecipes(){
+    getRecipes() {
         // slice returns a new array which is an exact copy from the one in this file.
         // if we omit slice() we would end up, possibly, changing the original array.
-        return this.recipes.slice(); 
+        return this.recipes.slice();
     }
 
-    getRecipe(index: number){
+    getRecipe(index: number) {
         return this.recipes[index];
     }
 
-    addIngredientsToShoppingList(ingredients: Ingredient[]) {
-        this.shoppingListService.addIngredients(ingredients);
-    }
+    // addIngredientsToShoppingList(ingredients: Ingredient[]) {
+    //     this.shoppingListService.addIngredients(ingredients);
+    // }
 
     addRecipe(recipe: Recipe) {
         this.recipes.push(recipe);
@@ -58,7 +55,7 @@ export class RecipeService {
 
     updateRecipe(index: number, newRecipe: Recipe) {
         this.recipes[index] = newRecipe;
-        this.recipesChanged.next(this.recipes.slice());        
+        this.recipesChanged.next(this.recipes.slice());
     }
 
     deleteRecipe(index: number) {

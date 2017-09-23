@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -8,6 +9,7 @@ import { SharedModule } from './shared/shared.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
+import { shoppingListReducer } from './shopping-list/store/shopping-list.reducers';
 
 @NgModule({ // defines our application
   declarations: [ // define which components, directives, pipes this module uses
@@ -20,8 +22,9 @@ import { CoreModule } from './core/core.module';
     SharedModule,
     ShoppingListModule,
     AuthModule, // all of these imports are added eagerly, ie no lazy loading
-    CoreModule // allows us to use the selector for the HeadeComponent in the AppComponent
+    CoreModule, // allows us to use the selector for the HeadeComponent in the AppComponent
+    StoreModule.forRoot({shoppingList: shoppingListReducer})
   ],
   bootstrap: [AppComponent] // defines the root component (where we define starting point of what we see)
 })
-export class AppModule { } 
+export class AppModule { }

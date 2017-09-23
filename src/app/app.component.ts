@@ -7,16 +7,16 @@ import * as firebase from 'firebase';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  loadedFeature: string = 'recipe';
+  loadedFeature = 'recipe';
 
-  ngOnInit(){
+  ngOnInit() {
     firebase.initializeApp({
-      apiKey: "AIzaSyCagqiKzv3MZtUQizagYc9kJzNd397nFCw",
-      authDomain: "udemy-ng-http-85067.firebaseapp.com"
+      apiKey: 'AIzaSyCagqiKzv3MZtUQizagYc9kJzNd397nFCw',
+      authDomain: 'udemy-ng-http-85067.firebaseapp.com'
     });
   }
-  
-  onNavigate(feature: string){
+
+  onNavigate(feature: string) {
     this.loadedFeature = feature;
   }
 }
