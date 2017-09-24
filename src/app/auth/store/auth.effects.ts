@@ -8,6 +8,7 @@ import { fromPromise } from 'rxjs/observable/fromPromise';
 
 import * as AuthActions from './auth.actions';
 import * as firebase from 'firebase';
+import { Router } from '@angular/router';
 
 
 @Injectable()
@@ -41,8 +42,26 @@ export class AuthEffects {
         .ofType(AuthActions.TRY_SIGNIN)
         .map((action: AuthActions.TrySignin) => {
             return action.payload;
+        })
+        .switchMap((authData: {username: string, password: string}) => {
+            return fromPromise(firebase.auth().signInWithEmailAndPassword(authData.username, authData.password));
+        })
+        .switchMap(() => {
+            return fromPromise(firebase.auth().currentUser.getIdToken());
+        })
+        .mergeMap((token: string) => {
+            this.router.navigate(['/']);
+            return [
+                {
+                    type: AuthActions.SIGNIN
+                },
+                {
+                    type: AuthActions.SET_TOKEN,
+                    payload: token
+                }
+            ];
         });
-    constructor(private actions$: Actions) {}
+    constructor(private actions$: Actions, private router: Router) {}
 }
 
 // the big difference between reducers is that we don't change the application state
