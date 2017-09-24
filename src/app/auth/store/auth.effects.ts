@@ -36,6 +36,12 @@ export class AuthEffects {
             ];
         }); // mergeMap allows us to merge multiple observables
 
+    @Effect()
+    authSignin = this.actions$
+        .ofType(AuthActions.TRY_SIGNIN)
+        .map((action: AuthActions.TrySignin) => {
+            return action.payload;
+        });
     constructor(private actions$: Actions) {}
 }
 
