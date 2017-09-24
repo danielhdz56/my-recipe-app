@@ -7,7 +7,6 @@ import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { RecipeService } from '../recipes/recipe.service';
 import { DataStorageService } from '../shared/data-storage.service';
-import { AuthService } from '../auth/auth.service';
 import { AuthInterceptor } from '../shared/auth.interceptor';
 import { LoggingInterceptor } from '../shared/logging.interceptor';
 
@@ -27,7 +26,6 @@ import { LoggingInterceptor } from '../shared/logging.interceptor';
     providers: [ // defines which services this module uses through the whole application
       RecipeService, // good practice to keep services in a core module, to keep app module lean
       DataStorageService,
-      AuthService,
       {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, // tells angular to use the interceptor
       {provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true} // this will happen after AuthInterceptor
     ]
