@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/mergeMap';
+import 'rxjs/add/operator/do';
 
 import { fromPromise } from 'rxjs/observable/fromPromise';
 
@@ -60,6 +61,13 @@ export class AuthEffects {
                     payload: token
                 }
             ];
+        });
+
+    @Effect({dispatch: false}) // false because we're not ending it with an action
+    authLogout = this.actions$
+        .ofType(AuthActions.LOGOUT)
+        .do(() => { // allows us to execute code without stopping the observable
+            this.router.navigate(['/']);
         });
     constructor(private actions$: Actions, private router: Router) {}
 }
